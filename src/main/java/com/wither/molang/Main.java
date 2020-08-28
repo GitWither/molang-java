@@ -1,5 +1,6 @@
 package com.wither.molang;
 
+import com.wither.molang.listeners.MoLangBasicListener;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -12,41 +13,7 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream(moLangLexer);
         MoLangParser parser = new MoLangParser(tokens);
         Stack<Float> stack = new Stack<>();
-        parser.addParseListener(new MoLangBaseListener() {
-            @Override
-            public void exitValue(MoLangParser.ValueContext ctx) {
-                if (ctx.NUMBER() != null) {
-                    stack.push(Float.parseFloat(ctx.NUMBER().getText()));
-                }
-            }
-
-            @Override
-            public void exitSum(MoLangParser.SumContext ctx) {
-                if (ctx.sum().size() == 2) {
-                    float b = stack.pop();
-                    float a = stack.pop();
-
-                    if (ctx.Add() != null) {
-                        stack.push(a + b);
-                    }
-                    else if (ctx.Subtract() != null) {
-                        stack.push(a - b);
-                    }
-                    else if (ctx.Multiply() != null) {
-                        stack.push(a * b);
-                    }
-                    else if (ctx.Divide() != null) {
-                        stack.push(a / b);
-                    }
-                    else if (ctx.Equal() != null) {
-                        stack.push(a == b ? 1f : 0f);
-                    }
-                    else if (ctx.NotEqual() != null) {
-                        stack.push(a != b ? 1f : 0f);
-                    }
-                }
-            }
-        });
+        parser.addParseListener(new MoLangBasicListener(stack));
         parser.program();
         System.out.println(stack);
     }
