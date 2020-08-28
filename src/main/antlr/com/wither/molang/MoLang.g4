@@ -1,4 +1,4 @@
-grammar Molang;
+grammar MoLang;
 
 //Logical operators
 And: '&&';
@@ -65,16 +65,20 @@ sum
     | sum Greater sum
     | sum GreaterOrEqual sum
     | sum NotEqual sum
-    | field
+    | value
     | function_call
     | LeftParen sum RightParen
+    ;
+
+value
+    : field
+    | NUMBER
     ;
 
 field
    : field ('[' index ']')
    | name ('.' field)
    | name
-   | NUMBER
    ;
 
 function_call

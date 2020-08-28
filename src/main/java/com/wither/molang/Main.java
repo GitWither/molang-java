@@ -1,11 +1,7 @@
 package com.wither.molang;
 
-import gen.com.wither.molang.MoLangBaseListener;
-import gen.com.wither.molang.MoLangLexer;
-import gen.com.wither.molang.MoLangParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.util.Stack;
 
@@ -18,7 +14,7 @@ public class Main {
         Stack<Float> stack = new Stack<>();
         parser.addParseListener(new MoLangBaseListener() {
             @Override
-            public void exitField(MoLangParser.FieldContext ctx) {
+            public void exitValue(MoLangParser.ValueContext ctx) {
                 if (ctx.NUMBER() != null) {
                     stack.push(Float.parseFloat(ctx.NUMBER().getText()));
                 }
@@ -31,7 +27,7 @@ public class Main {
                     float a = stack.pop();
 
                     if (ctx.Add() != null) {
-                       stack.push(a + b);
+                        stack.push(a + b);
                     }
                     else if (ctx.Subtract() != null) {
                         stack.push(a - b);
