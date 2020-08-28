@@ -31,10 +31,27 @@ public class Main {
                     float a = stack.pop();
 
                     if (ctx.Add() != null) {
-                        
+                       stack.push(a + b);
+                    }
+                    else if (ctx.Subtract() != null) {
+                        stack.push(a - b);
+                    }
+                    else if (ctx.Multiply() != null) {
+                        stack.push(a * b);
+                    }
+                    else if (ctx.Divide() != null) {
+                        stack.push(a / b);
+                    }
+                    else if (ctx.Equal() != null) {
+                        stack.push(a == b ? 1f : 0f);
+                    }
+                    else if (ctx.NotEqual() != null) {
+                        stack.push(a != b ? 1f : 0f);
                     }
                 }
             }
         });
+        parser.program();
+        System.out.println(stack);
     }
 }
