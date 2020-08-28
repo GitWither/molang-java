@@ -17,7 +17,6 @@ Add: '+';
 Subtract: '-';
 Multiply: '*';
 Divide: '/';
-Modulus: '%'; //Not sure if this one is implemented
 
 //Keywords
 This: 'this';
@@ -58,7 +57,6 @@ sum
     | sum Subtract sum
     | sum Multiply sum
     | sum Divide sum
-    | sum Modulus sum
     | sum Equal sum
     | sum Less sum
     | sum LessOrEqual sum
@@ -66,7 +64,6 @@ sum
     | sum GreaterOrEqual sum
     | sum NotEqual sum
     | value
-    | function_call
     | LeftParen sum RightParen
     ;
 
@@ -75,14 +72,16 @@ value
     | NUMBER
     ;
 
+argument
+    : field
+    | NUMBER
+    ;
+
 field
-   : field ('[' value ']')
+   : field LeftBracket value RightBracket
+   | field LeftParen argument (',' argument)* RightParen
    | field '.' name
    | name
-   ;
-
-function_call
-   : name ('.' name)* LeftParen (sum? (','sum)*) RightParen
    ;
 
 name

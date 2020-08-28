@@ -1,10 +1,7 @@
 package com.wither.molang.listeners;
 
 import com.wither.molang.MoLangParser;
-import com.wither.molang.objects.MoLangArray;
-import com.wither.molang.objects.MoLangElement;
-import com.wither.molang.objects.MoLangObject;
-import com.wither.molang.objects.MoLangPrimitive;
+import com.wither.molang.objects.*;
 
 import java.util.Stack;
 
@@ -98,6 +95,24 @@ public class MoLangBasicListener extends com.wither.molang.MoLangBaseListener {
                 float index = resolveValue(ctx.value());
                 //TODO: What if we won't get integer? Do we throw exception or remove the decimal part like now?
                 return ((MoLangArray) element).get((int) index);
+            }
+            if (ctx.LeftParen() != null) {
+                if (!(element instanceof MoLangFunction)) {
+                    //TODO: No idea how MoLang handles unexpected types
+                    throw new RuntimeException(
+                            "Expected function from '" + ctx.field().getText() + "', but got " + element.getTypeName());
+                }
+                MoLangElement[] args = new MoLangElement[ctx.argument().size()];
+                for (int i = 0; i < ctx.argument().size(); i++) {
+                    MoLangParser.ArgumentContext value = ctx.argument(i);
+                    if (value.NUMBER() != null) {
+                        args[i] = new MoLangPrimitive(Float.parseFloat(value.NUMBER().getText()));
+                    }
+                    else if (value.field() != null) {
+                        args[i] = resolveField(ctx.field());
+                    }
+                }
+                return ((MoLangFunction) element).get(args);
             }
             else if (ctx.name() != null) {
                 if (!(element instanceof MoLangObject)) {
