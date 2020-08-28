@@ -11,7 +11,7 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        String string = "5 + 5";
+        String string = "2 + (3 * 4)";
         MoLangLexer moLangLexer = new MoLangLexer(CharStreams.fromString(string));
         CommonTokenStream tokens = new CommonTokenStream(moLangLexer);
         MoLangParser parser = new MoLangParser(tokens);
