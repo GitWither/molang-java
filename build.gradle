@@ -30,16 +30,6 @@ generateGrammarSource {
     arguments += ["-visitor",
                   "-long-messages",
                   "-package", "com.wither.molang"]
-
-
-    // Keep a copy of generated sources
-    doLast {
-        println "Copying generated grammar lexer/parser files to main directory."
-        copy {
-            from "${buildDir}/generated-src/antlr/main"
-            into "generated-src/main/java"
-        }
-    }
 }
 
 clean.doLast {
