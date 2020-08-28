@@ -16,4 +16,9 @@ public class MoLangPrimitive extends MoLangElement {
         this.value = value;
     }
 
+    @Override
+    public String getTypeName() {
+        return "number";
+    }
+
 }

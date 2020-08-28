@@ -3,7 +3,7 @@ package com.wither.molang.objects;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoLangArray {
+public class MoLangArray extends MoLangElement {
 
     private final List<MoLangElement> items = new ArrayList<>();
 
@@ -15,4 +15,8 @@ public class MoLangArray {
         items.set(index, value);
     }
 
+    @Override
+    public String getTypeName() {
+        return "array";
+    }
 }

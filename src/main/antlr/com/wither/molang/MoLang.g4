@@ -76,8 +76,8 @@ value
     ;
 
 field
-   : field ('[' index ']')
-   | name ('.' field)
+   : field ('[' value ']')
+   | field '.' name
    | name
    ;
 
@@ -87,11 +87,6 @@ function_call
 
 name
    : STRING
-   ;
-
-index
-   : field
-   | NUMBER
    ;
 
 STRING
