@@ -1,5 +1,7 @@
 package com.wither.molang.objects;
 
+import com.wither.molang.util.MathHelper;
+
 public class MoLangMath extends MoLangObject {
 
     public MoLangMath() {
@@ -10,6 +12,79 @@ public class MoLangMath extends MoLangObject {
                    return new MoLangPrimitive(
                      Math.abs(((MoLangPrimitive) moLangElement[0]).get())
                    );
+                }),
+                "acos", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "acos");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.toDegrees(Math.acos(((MoLangPrimitive) moLangElement[0]).get()))
+                    );
+                }),
+                "asin", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "asin");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.toDegrees(Math.asin(((MoLangPrimitive) moLangElement[0]).get()))
+                    );
+                }),
+                "atan", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "atan");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.toDegrees(Math.atan(((MoLangPrimitive) moLangElement[0]).get()))
+                    );
+                }),
+                "atan2", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 2, 2, "atan2");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.toDegrees(Math.atan2(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()))
+                    );
+                }),
+                "ceil", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "ceil");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.ceil(((MoLangPrimitive) moLangElement[0]).get())
+                    );
+                }),
+                "clamp", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 3, 3, "clamp");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 2, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.clamp(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get(), ((MoLangPrimitive) moLangElement[2]).get())
+                    );
+                }),
+                "cos", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "cos");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.cos(Math.toRadians(((MoLangPrimitive) moLangElement[0]).get()))
+                    );
+                }),
+                "exp", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "exp");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.pow(Math.E, ((MoLangPrimitive) moLangElement[0]).get())
+                    );
+                }),
+                "floor", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "floor");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.floor(((MoLangPrimitive) moLangElement[0]).get())
+                    );
+                }),
+                "hermite_blend", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "hermite_blend");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.hermiteBlend(((MoLangPrimitive) moLangElement[0]).get())
+                    );
                 }),
                 "mod", new MoLangFunction(moLangElement -> {
                     checkArgsCount(moLangElement, 2, 2, "mod");
