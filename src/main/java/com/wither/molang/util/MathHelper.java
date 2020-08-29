@@ -12,6 +12,9 @@ public class MathHelper {
     public static float hermiteBlend(float value) {
         return (float) (3 * Math.pow(value, 2) - 2 * Math.pow(value, 3F));
     }
+
+    public static float truncate(float value) {
+        return (float)((value < 0) ? Math.ceil(value) : Math.floor(value));
     }
 
     //TODO: Implement die roll

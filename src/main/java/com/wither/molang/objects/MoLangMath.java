@@ -86,12 +86,32 @@ public class MoLangMath extends MoLangObject {
                             MathHelper.hermiteBlend(((MoLangPrimitive) moLangElement[0]).get())
                     );
                 }),
-                "mod", new MoLangFunction(moLangElement -> {
-                    checkArgsCount(moLangElement, 2, 2, "mod");
+                "lerp", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 3, 3, "lerp");
                     checkArgType(moLangElement, 0, MoLangPrimitive.class);
                     checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 2, MoLangPrimitive.class);
                     return new MoLangPrimitive(
-                            ((MoLangPrimitive) moLangElement[0]).get() % ((MoLangPrimitive) moLangElement[1]).get());
+                            MathHelper.lerp(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get(), ((MoLangPrimitive) moLangElement[2]).get())
+                    );
+                }),
+                "lerprotate", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 3, 3, "lerprotate");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 2, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            //TODO: Implement correct function
+                            0
+                            //MathHelper.lerp(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get(), ((MoLangPrimitive) moLangElement[2]).get())
+                    );
+                }),
+                "ln", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "ln");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.log(((MoLangPrimitive) moLangElement[0]).get())
+                    );
                 }),
                 "max", new MoLangFunction(moLangElement -> {
                     checkArgsCount(moLangElement, 2, 2, "max");
@@ -106,6 +126,54 @@ public class MoLangMath extends MoLangObject {
                     checkArgType(moLangElement, 1, MoLangPrimitive.class);
                     return new MoLangPrimitive(
                             Math.min(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
+                }),
+                "mod", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 2, 2, "mod");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            ((MoLangPrimitive) moLangElement[0]).get() % ((MoLangPrimitive) moLangElement[1]).get());
+                }),
+                "pi", new MoLangFunction(moLangElement -> {
+                    //FIXME: Molang has a constant called Math.pi however this fails unit tests
+                    return new MoLangPrimitive(
+                            (float) Math.PI
+                    );
+                }),
+                "pow", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 2, 2, "pow");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.pow(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
+                }),
+                "round", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "round");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            Math.round(((MoLangPrimitive) moLangElement[0]).get())
+                    );
+                }),
+                "sin", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "sin");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.sin(Math.toRadians(((MoLangPrimitive) moLangElement[0]).get()))
+                    );
+                }),
+                "sqrt", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "sqrt");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            (float) Math.sqrt(((MoLangPrimitive) moLangElement[0]).get())
+                    );
+                }),
+                "trunc", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 1, 1, "trunc");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.truncate(((MoLangPrimitive) moLangElement[0]).get())
+                    );
                 })
         );
     }
