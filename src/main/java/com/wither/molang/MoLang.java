@@ -4,6 +4,7 @@ import com.wither.molang.listeners.MoLangBasicListener;
 import com.wither.molang.objects.MoLangMath;
 import com.wither.molang.objects.MoLangObject;
 import com.wither.molang.objects.MoLangPrimitive;
+import com.wither.molang.objects.MoLangQuery;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -27,7 +28,7 @@ public class MoLang {
         this.parser = new MoLangParser(tokens);
         this.stack = new Stack<>();
         this.scope = new MoLangObject(
-                "query", new MoLangObject(),
+                "query", new MoLangQuery(),
                 "context", new MoLangObject(),
                 "temp", new MoLangObject(),
                 "math", new MoLangMath(),

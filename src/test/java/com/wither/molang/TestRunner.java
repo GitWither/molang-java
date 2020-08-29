@@ -2,6 +2,7 @@ package com.wither.molang;
 
 import com.wither.molang.tests.CaseTests;
 import com.wither.molang.tests.MathTests;
+import com.wither.molang.tests.QueryTests;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -14,7 +15,7 @@ public class TestRunner {
     public static final String RESET = "\033[0m";
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(MathTests.class, CaseTests.class);
+        Result result = JUnitCore.runClasses(MathTests.class, CaseTests.class, QueryTests.class);
         List<Failure> failures = result.getFailures();
         if (failures.size() > 0) {
             for (Failure failure : failures) {
