@@ -1,5 +1,6 @@
 package com.wither.molang;
 
+import com.wither.molang.tests.CaseTests;
 import com.wither.molang.tests.MathTests;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -13,7 +14,7 @@ public class TestRunner {
     public static final String RESET = "\033[0m";
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(MathTests.class);
+        Result result = JUnitCore.runClasses(MathTests.class, CaseTests.class);
         List<Failure> failures = result.getFailures();
         if (failures.size() > 0) {
             for (Failure failure : failures) {
