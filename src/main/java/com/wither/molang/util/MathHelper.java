@@ -17,6 +17,30 @@ public class MathHelper {
         return (float)((value < 0) ? Math.ceil(value) : Math.floor(value));
     }
 
+    public static float random(float min, float max) {
+        return (float) (min + Math.random() * (max - min));
+    }
+
+    public static float randomInteger(float min, float max) {
+        return (int) (min + Math.random() * (max - min));
+    }
+
+    public static float dieRoll(float number, float min, float max) {
+        float result = 0;
+        for (int i = 0; i < number; i++) {
+            result += random(min, max);
+        }
+        return result;
+    }
+
+    public static float dieRollInteger(float number, float min, float max) {
+        float result = 0;
+        for (int i = 0; i < number; i++) {
+            result += random(min, max);
+        }
+        return (int) result;
+    }
+
     //TODO: Implement die roll
     //TODO: Implement integer die roll
     //TODO: Implement lerprotate

@@ -101,6 +101,51 @@ public class MathTests {
     }
 
     @Test
+    public void mathDieRoll() {
+        //Can't really test random huh
+        MoLang molang1 = new MoLang("math.die_roll(5, 0, 5)");
+        MoLang molang2 = new MoLang("math.die_roll(5, 0, 5)");
+        MoLang molang3 = new MoLang("math.die_roll(5, 0, 5)");
+        MoLang molang4 = new MoLang("math.die_roll(5, 0, 5)");
+        MoLang molang5 = new MoLang("math.die_roll(5, 0, 5)");
+
+        float result1 = molang1.Evaluate();
+        float result2 = molang2.Evaluate();
+        float result3 = molang3.Evaluate();
+        float result4 = molang4.Evaluate();
+        float result5 = molang5.Evaluate();
+
+        assertEquals(true, (result1 >= 0 && result1 <= 25));
+        assertEquals(true, (result2 >= 0 && result2 <= 25));
+        assertEquals(true, (result3 >= 0 && result3 <= 25));
+        assertEquals(true, (result4 >= 0 && result4 <= 25));
+        assertEquals(true, (result5 >= 0 && result5 <= 25));
+    }
+
+    @Test
+    public void mathDieRollInteger() {
+        //Can't really test random huh
+
+        MoLang molang1 = new MoLang("math.die_roll_integer(5, 0, 5)");
+        MoLang molang2 = new MoLang("math.die_roll_integer(5, 0, 5)");
+        MoLang molang3 = new MoLang("math.die_roll_integer(5, 0, 5)");
+        MoLang molang4 = new MoLang("math.die_roll_integer(5, 0, 5)");
+        MoLang molang5 = new MoLang("math.die_roll_integer(5, 0, 5)");
+
+        float result1 = molang1.Evaluate();
+        float result2 = molang2.Evaluate();
+        float result3 = molang3.Evaluate();
+        float result4 = molang4.Evaluate();
+        float result5 = molang5.Evaluate();
+
+        assertEquals(true, (result1 >= 0 && result1 <= 25 && (result1 - (int)result1 == 0)));
+        assertEquals(true, (result2 >= 0 && result2 <= 25 && (result2 - (int)result2 == 0)));
+        assertEquals(true, (result3 >= 0 && result3 <= 25 && (result3 - (int)result3 == 0)));
+        assertEquals(true, (result4 >= 0 && result4 <= 25 && (result4 - (int)result4 == 0)));
+        assertEquals(true, (result5 >= 0 && result5 <= 25 && (result5 - (int)result5 == 0)));
+    }
+
+    @Test
     public void mathExp() {
         MoLang molang = new MoLang("math.exp(5)");
 
@@ -172,6 +217,26 @@ public class MathTests {
         MoLang molang = new MoLang("math.pow(2, 3)");
 
         assertEquals(8, molang.Evaluate(), 0);
+    }
+
+    @Test
+    public void mathRandom() {
+        //Can't really test random huh
+
+        MoLang molang = new MoLang("math.random(1, 5)");
+
+        float result = molang.Evaluate();
+        assertEquals(true, (result >= 1 && result <= 5));
+    }
+
+    @Test
+    public void mathRandomInteger() {
+        //Can't really test random huh
+
+        MoLang molang = new MoLang("math.random_integer(1, 5)");
+
+        float result = molang.Evaluate();
+        assertEquals(true, (result >= 1 && result <= 5 && (result - (int)result == 0)));
     }
 
     @Test

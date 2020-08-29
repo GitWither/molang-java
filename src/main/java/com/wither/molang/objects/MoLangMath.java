@@ -65,6 +65,24 @@ public class MoLangMath extends MoLangObject {
                             (float) Math.cos(Math.toRadians(((MoLangPrimitive) moLangElement[0]).get()))
                     );
                 }),
+                "die_roll", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 3, 3, "die_roll");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 2, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.dieRoll(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get(), ((MoLangPrimitive) moLangElement[2]).get())
+                    );
+                }),
+                "die_roll_integer", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 3, 3, "die_roll_integer");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 2, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.dieRollInteger(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get(), ((MoLangPrimitive) moLangElement[2]).get())
+                    );
+                }),
                 "exp", new MoLangFunction(moLangElement -> {
                     checkArgsCount(moLangElement, 1, 1, "exp");
                     checkArgType(moLangElement, 0, MoLangPrimitive.class);
@@ -146,6 +164,20 @@ public class MoLangMath extends MoLangObject {
                     checkArgType(moLangElement, 1, MoLangPrimitive.class);
                     return new MoLangPrimitive(
                             (float) Math.pow(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
+                }),
+                "random", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 2, 2, "pow");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.random(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
+                }),
+                "random_integer", new MoLangFunction(moLangElement -> {
+                    checkArgsCount(moLangElement, 2, 2, "pow");
+                    checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                    checkArgType(moLangElement, 1, MoLangPrimitive.class);
+                    return new MoLangPrimitive(
+                            MathHelper.randomInteger(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
                 }),
                 "round", new MoLangFunction(moLangElement -> {
                     checkArgsCount(moLangElement, 1, 1, "round");
