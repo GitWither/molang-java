@@ -36,7 +36,7 @@ public class MathHelper {
     public static float dieRollInteger(float number, float min, float max) {
         float result = 0;
         for (int i = 0; i < number; i++) {
-            result += random(min, max);
+            result += randomInteger(min, max);
         }
         return (int) result;
     }
