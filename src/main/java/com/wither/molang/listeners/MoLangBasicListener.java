@@ -107,6 +107,9 @@ public class MoLangBasicListener extends com.wither.molang.MoLangBaseListener {
         }
         else if (ctx.field() != null) {
             MoLangElement resolve = resolveField(ctx.field());
+            if (resolve instanceof MoLangFunction) {
+                resolve = ((MoLangFunction) resolve).get(new MoLangElement[0]);
+            }
             if (resolve == null) {
                 //TODO: No idea how MoLang handles undefined values
                 throw new RuntimeException("Undefined field '" + ctx.field().getText() + "'");

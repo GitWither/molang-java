@@ -213,10 +213,9 @@ public class MathTests {
 
     @Test
     public void mathPi() {
-        //MoLang molang = new MoLang("math.pi");
+        MoLang molang = new MoLang("math.pi");
 
-
-        //assertEquals((float)Math.PI, molang.Evaluate(), 0);
+        assertEquals((float)Math.PI, molang.evaluate(), 0);
     }
 
     @Test
