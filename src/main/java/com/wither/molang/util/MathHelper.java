@@ -40,10 +40,5 @@ public class MathHelper {
         }
         return (int) result;
     }
-
-    //TODO: Implement die roll
-    //TODO: Implement integer die roll
     //TODO: Implement lerprotate
-    //TODO: Implement random integer range
-    //TODO: Implement random float range
 }
