@@ -39,7 +39,7 @@ public class MathTests {
     public void simpleExpression() {
         MoLang molang = new MoLang("5 + 2 - 3 + 8 * 4 / 5 * 3");
 
-        assertEquals(23.2, molang.evaluate(), 0);
+        assertEquals(23.2f, molang.evaluate(), 0);
     }
 
     @Test

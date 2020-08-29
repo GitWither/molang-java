@@ -109,7 +109,7 @@ public class MoLangBasicListener extends com.wither.molang.MoLangBaseListener {
                         args[i] = new MoLangPrimitive(Float.parseFloat(value.NUMBER().getText()));
                     }
                     else if (value.field() != null) {
-                        args[i] = resolveField(ctx.field());
+                        args[i] = resolveField(value.field());
                     }
                 }
                 return ((MoLangFunction) element).get(args);

@@ -53,10 +53,8 @@ block
     ;
 
 sum
-    : sum Add sum
-    | sum Subtract sum
-    | sum Multiply sum
-    | sum Divide sum
+    : sum (Multiply | Divide) sum
+    | sum (Add | Subtract) sum
     | sum Equal sum
     | sum Less sum
     | sum LessOrEqual sum
