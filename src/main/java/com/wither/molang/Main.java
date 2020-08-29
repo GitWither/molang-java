@@ -1,14 +1,5 @@
 package com.wither.molang;
 
-import com.wither.molang.listeners.MoLangBasicListener;
-import com.wither.molang.objects.MoLangMath;
-import com.wither.molang.objects.MoLangObject;
-import com.wither.molang.objects.MoLangPrimitive;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-
-import java.util.Stack;
-
 public class Main {
     public static void main(String[] args) {
 //        String string = "2 + (variable.test.a * 4)";
@@ -34,6 +25,6 @@ public class Main {
         System.out.println(stack);
          */
         MoLang moLang = new MoLang("5 + 5 + math.abs(-5)");
-        System.out.println(moLang.Evaluate());
+        System.out.println(moLang.evaluate());
     }
 }

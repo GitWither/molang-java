@@ -39,7 +39,7 @@ public class MoLang {
         );
     }
 
-    public float Evaluate() {
+    public float evaluate() {
         this.parser.addParseListener(new MoLangBasicListener(this.stack, this.scope));
         this.parser.program();
         return this.stack.get(0);
