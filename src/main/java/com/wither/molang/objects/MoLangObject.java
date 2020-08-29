@@ -28,7 +28,7 @@ public class MoLangObject extends MoLangElement {
     }
 
     public MoLangElement get(String name) {
-        return properties.get(name);
+        return properties.get(name.toLowerCase());
     }
 
     public void set(String name, MoLangElement value) {
