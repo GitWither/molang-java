@@ -10,7 +10,8 @@ public class MathHelper {
     }
 
     public static float hermiteBlend(float value) {
-        return (float) (Math.pow(3F * value, 2F) - Math.pow(2F * value, 3F));
+        return (float) (3 * Math.pow(value, 2) - 2 * Math.pow(value, 3F));
+    }
     }
 
     //TODO: Implement die roll
