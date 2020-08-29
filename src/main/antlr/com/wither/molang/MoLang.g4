@@ -51,7 +51,8 @@ assignment
     ;
 
 block
-    : LeftBrace (expression ';')* RightBrace
+    : LeftBrace (Return expression ';')* RightBrace
+    | expression
     ;
 
 sum
