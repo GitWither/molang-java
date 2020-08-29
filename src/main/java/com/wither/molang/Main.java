@@ -12,7 +12,8 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
 //        String string = "2 + (variable.test.a * 4)";
-        String string = "math.mod(8, 3)";
+        /*
+        String string = "math.acos(0.5)";
         MoLangLexer moLangLexer = new MoLangLexer(CharStreams.fromString(string));
         CommonTokenStream tokens = new CommonTokenStream(moLangLexer);
         MoLangParser parser = new MoLangParser(tokens);
@@ -31,5 +32,8 @@ public class Main {
         parser.addParseListener(new MoLangBasicListener(stack, scope));
         parser.program();
         System.out.println(stack);
+         */
+        MoLang moLang = new MoLang("5 + 5 + math.abs(-5)");
+        System.out.println(moLang.Evaluate());
     }
 }
