@@ -21,6 +21,11 @@ public class MoLang {
 
 
 
+    public MoLang(String expression, MoLangObject variables) {
+        this(expression);
+        this.scope.set("variable", variables);
+    }
+
     public MoLang(String expression) {
         this.expression = expression;
         this.lexer = new MoLangLexer(CharStreams.fromString(this.expression));
@@ -31,12 +36,7 @@ public class MoLang {
                 "query", new MoLangQuery(),
                 "context", new MoLangObject(),
                 "temp", new MoLangObject(),
-                "math", new MoLangMath(),
-                "variable", new MoLangObject(
-                "test", new MoLangObject(
-                "a", new MoLangPrimitive(3f)
-                )
-            )
+                "math", new MoLangMath()
         );
     }
 
