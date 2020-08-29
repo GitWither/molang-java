@@ -27,10 +27,7 @@ public class Main {
         parser.program();
         System.out.println(stack);
          */
-        MoLang moLang = new MoLang("math.cos(variable.x) + math.sin(variable.a);", new MoLangObject(
-                "x", new MoLangPrimitive(60f),
-                "a", new MoLangPrimitive(30f)
-        ));
+        MoLang moLang = new MoLang("math.pi");
         System.out.println(moLang.evaluate());
     }
 }

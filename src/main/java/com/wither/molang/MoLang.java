@@ -5,6 +5,7 @@ import com.wither.molang.objects.MoLangMath;
 import com.wither.molang.objects.MoLangObject;
 import com.wither.molang.objects.MoLangPrimitive;
 import com.wither.molang.objects.MoLangQuery;
+import com.wither.molang.util.VariableType;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -12,14 +13,17 @@ import java.util.Stack;
 
 public class MoLang {
 
-    final String expression;
+    private final String expression;
     private final MoLangLexer lexer;
     private final CommonTokenStream tokens;
     private final MoLangParser parser;
     private final Stack<Float> stack;
     private final MoLangObject scope;
 
-
+    public MoLang(VariableType variableType, String expression, MoLangObject variables) {
+        this(expression);
+        this.scope.set(variableType.getId(), variables);
+    }
 
     public MoLang(String expression, MoLangObject variables) {
         this(expression);
@@ -34,10 +38,16 @@ public class MoLang {
         this.stack = new Stack<>();
         this.scope = new MoLangObject(
                 "query", new MoLangQuery(),
-                "context", new MoLangObject(),
-                "temp", new MoLangObject(),
                 "math", new MoLangMath()
         );
+    }
+
+    public void setVariable(String variable, float value) {
+        //TODO: Implement runtime variable setting
+    }
+
+    public String getExpression() {
+        return this.expression;
     }
 
     public float evaluate() {

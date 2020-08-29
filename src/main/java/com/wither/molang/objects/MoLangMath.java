@@ -177,7 +177,6 @@ public class MoLangMath extends MoLangFunctionObject {
                             ((MoLangPrimitive) moLangElement[0]).get() % ((MoLangPrimitive) moLangElement[1]).get());
                 }),
                 "pi", new MoLangFunction(moLangElement -> {
-                    //FIXME: Molang has a constant called Math.pi however this fails unit tests
                     return new MoLangPrimitive(
                             (float) Math.PI
                     );
