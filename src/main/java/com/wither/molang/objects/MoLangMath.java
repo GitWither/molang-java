@@ -4,6 +4,13 @@ public class MoLangMath extends MoLangObject {
 
     public MoLangMath() {
         super(
+                "abs", new MoLangFunction(moLangElement -> {
+                   checkArgsCount(moLangElement, 1, 1, "abs");
+                   checkArgType(moLangElement, 0, MoLangPrimitive.class);
+                   return new MoLangPrimitive(
+                     Math.abs(((MoLangPrimitive) moLangElement[0]).get())
+                   );
+                }),
                 "mod", new MoLangFunction(moLangElement -> {
                     checkArgsCount(moLangElement, 2, 2, "mod");
                     checkArgType(moLangElement, 0, MoLangPrimitive.class);
