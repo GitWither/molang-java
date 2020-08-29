@@ -8,6 +8,7 @@ import java.util.Stack;
 public class MoLangBasicListener extends com.wither.molang.MoLangBaseListener {
     private final Stack<Float> stack;
     private final MoLangObject scope;
+    private boolean ignoreExecution = false;
 
     public MoLangBasicListener(Stack<Float> stack, MoLangObject scope) {
         this.stack = stack;
@@ -16,11 +17,17 @@ public class MoLangBasicListener extends com.wither.molang.MoLangBaseListener {
 
     @Override
     public void exitValue(MoLangParser.ValueContext ctx) {
+        if (ignoreExecution) {
+            return;
+        }
         this.stack.push(resolveValue(ctx));
     }
 
     @Override
     public void exitSum(MoLangParser.SumContext ctx) {
+        if (ignoreExecution) {
+            return;
+        }
         if (ctx.sum().size() == 2) {
             float b = this.stack.pop();
             float a = this.stack.pop();
@@ -43,7 +50,49 @@ public class MoLangBasicListener extends com.wither.molang.MoLangBaseListener {
             else if (ctx.NotEqual() != null) {
                 this.stack.push(a != b ? 1f : 0f);
             }
+            else if (ctx.Greater() != null) {
+                this.stack.push(a > b ? 1f : 0f);
+            }
+            else if (ctx.Less() != null) {
+                this.stack.push(a < b ? 1f : 0f);
+            }
+            else if (ctx.GreaterOrEqual() != null) {
+                this.stack.push(a >= b ? 1f : 0f);
+            }
+            else if (ctx.LessOrEqual() != null) {
+                this.stack.push(a <= b ? 1f : 0f);
+            }
         }
+    }
+
+    @Override
+    public void enterBlock(MoLangParser.BlockContext ctx) {
+        if (ignoreExecution) {
+            return;
+        }
+        if (ctx.getParent() instanceof MoLangParser.Conditional_operatorContext) {
+            int index = ((MoLangParser.Conditional_operatorContext) ctx.getParent()).block().indexOf(ctx);
+            if ((stack.peek() == 0 && index == 0) || (stack.peek() != 0 && index == 1)) {
+                ignoreExecution = true;
+            }
+        }
+    }
+
+    @Override
+    public void exitBlock(MoLangParser.BlockContext ctx) {
+        if (ignoreExecution) {
+            if (ctx.getParent() instanceof MoLangParser.Conditional_operatorContext) {
+                int index = ((MoLangParser.Conditional_operatorContext) ctx.getParent()).block().indexOf(ctx);
+                if ((stack.peek() == 0 && index == 0) || (stack.peek() != 0 && index == 1)) {
+                    ignoreExecution = false;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void exitConditional_operator(MoLangParser.Conditional_operatorContext ctx) {
+
     }
 
     /**

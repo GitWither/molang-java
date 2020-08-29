@@ -21,6 +21,8 @@ Divide: '/';
 //Keywords
 This: 'this';
 Return: 'return';
+Break: 'break';
+Continue: 'continue';
 
 //Brackets
 LeftParen: '(';
@@ -31,7 +33,7 @@ LeftBracket: '[';
 RightBracket: ']';
 
 program
-    : expression
+    : expression+
     ;
 
 expression
@@ -41,7 +43,7 @@ expression
     ;
 
 conditional_operator
-    : LeftParen expression RightParen '?' block (':' block)?
+    : LeftParen sum RightParen '?' block (':' block)?
     ;
 
 assignment

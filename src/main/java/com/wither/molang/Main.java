@@ -24,7 +24,7 @@ public class Main {
         parser.program();
         System.out.println(stack);
          */
-        MoLang moLang = new MoLang("5 + 5 + math.abs(-5)");
+        MoLang moLang = new MoLang("(1 < 5) ? {2;} : {3;}");
         System.out.println(moLang.evaluate());
     }
 }
