@@ -8,6 +8,41 @@ import static org.junit.Assert.assertEquals;
 public class MathTests {
 
     @Test
+    public void addition() {
+        MoLang molang = new MoLang("5 + 2");
+
+        assertEquals(7, molang.Evaluate(), 0);
+    }
+
+    @Test
+    public void subtraction() {
+        MoLang molang = new MoLang("5 - 2");
+
+        assertEquals(3, molang.Evaluate(), 0);
+    }
+
+    @Test
+    public void multiply() {
+        MoLang molang = new MoLang("5 * 2");
+
+        assertEquals(10, molang.Evaluate(), 0);
+    }
+
+    @Test
+    public void divide() {
+        MoLang molang = new MoLang("10 / 2");
+
+        assertEquals(5, molang.Evaluate(), 0);
+    }
+
+    @Test
+    public void simpleExpression() {
+        MoLang molang = new MoLang("5 + 2 - 3 + 8 * 4 / 5 * 3");
+
+        assertEquals(23.2, molang.Evaluate(), 0);
+    }
+
+    @Test
     public void mathAbs() {
         MoLang molang = new MoLang("math.abs(-5)");
 
