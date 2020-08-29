@@ -43,7 +43,7 @@ expression
     ;
 
 conditional_operator
-    : LeftParen sum RightParen '?' block (':' block)?
+    : LeftParen? sum RightParen? '?' block (':' block)?
     ;
 
 assignment
