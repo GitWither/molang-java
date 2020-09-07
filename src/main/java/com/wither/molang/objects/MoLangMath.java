@@ -11,7 +11,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            Math.abs(((MoLangPrimitive) moLangElement[0]).get())
+                            Math.abs(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "acos", new MoLangFunction(moLangElement -> {
@@ -19,7 +19,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.toDegrees(Math.acos(((MoLangPrimitive) moLangElement[0]).get()))
+                            (float) Math.toDegrees(Math.acos(((MoLangPrimitive) moLangElement[0]).asFloat()))
                     );
                 }),
                 "asin", new MoLangFunction(moLangElement -> {
@@ -27,7 +27,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.toDegrees(Math.asin(((MoLangPrimitive) moLangElement[0]).get()))
+                            (float) Math.toDegrees(Math.asin(((MoLangPrimitive) moLangElement[0]).asFloat()))
                     );
                 }),
                 "atan", new MoLangFunction(moLangElement -> {
@@ -35,7 +35,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.toDegrees(Math.atan(((MoLangPrimitive) moLangElement[0]).get()))
+                            (float) Math.toDegrees(Math.atan(((MoLangPrimitive) moLangElement[0]).asFloat()))
                     );
                 }),
                 "atan2", new MoLangFunction(moLangElement -> {
@@ -44,8 +44,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.toDegrees(Math.atan2(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get()))
+                            (float) Math.toDegrees(Math.atan2(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat()))
                     );
                 }),
                 "ceil", new MoLangFunction(moLangElement -> {
@@ -53,7 +53,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.ceil(((MoLangPrimitive) moLangElement[0]).get())
+                            (float) Math.ceil(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "clamp", new MoLangFunction(moLangElement -> {
@@ -63,8 +63,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.clamp(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get(), ((MoLangPrimitive) moLangElement[2]).get())
+                            MathHelper.clamp(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat(), ((MoLangPrimitive) moLangElement[2]).asFloat())
                     );
                 }),
                 "cos", new MoLangFunction(moLangElement -> {
@@ -72,7 +72,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.cos(Math.toRadians(((MoLangPrimitive) moLangElement[0]).get()))
+                            (float) Math.cos(Math.toRadians(((MoLangPrimitive) moLangElement[0]).asFloat()))
                     );
                 }),
                 "die_roll", new MoLangFunction(moLangElement -> {
@@ -82,8 +82,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.dieRoll(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get(), ((MoLangPrimitive) moLangElement[2]).get())
+                            MathHelper.dieRoll(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat(), ((MoLangPrimitive) moLangElement[2]).asFloat())
                     );
                 }),
                 "die_roll_integer", new MoLangFunction(moLangElement -> {
@@ -93,8 +93,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.dieRollInteger(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get(), ((MoLangPrimitive) moLangElement[2]).get())
+                            MathHelper.dieRollInteger(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat(), ((MoLangPrimitive) moLangElement[2]).asFloat())
                     );
                 }),
                 "exp", new MoLangFunction(moLangElement -> {
@@ -102,7 +102,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.pow(Math.E, ((MoLangPrimitive) moLangElement[0]).get())
+                            (float) Math.pow(Math.E, ((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "floor", new MoLangFunction(moLangElement -> {
@@ -110,7 +110,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.floor(((MoLangPrimitive) moLangElement[0]).get())
+                            (float) Math.floor(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "hermite_blend", new MoLangFunction(moLangElement -> {
@@ -118,7 +118,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.hermiteBlend(((MoLangPrimitive) moLangElement[0]).get())
+                            MathHelper.hermiteBlend(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "lerp", new MoLangFunction(moLangElement -> {
@@ -128,8 +128,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.lerp(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get(), ((MoLangPrimitive) moLangElement[2]).get())
+                            MathHelper.lerp(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat(), ((MoLangPrimitive) moLangElement[2]).asFloat())
                     );
                 }),
                 "lerprotate", new MoLangFunction(moLangElement -> {
@@ -149,7 +149,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.log(((MoLangPrimitive) moLangElement[0]).get())
+                            (float) Math.log(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "max", new MoLangFunction(moLangElement -> {
@@ -158,7 +158,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            Math.max(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
+                            Math.max(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1]).asFloat()));
                 }),
                 "min", new MoLangFunction(moLangElement -> {
                     checkArgs(moLangElement, 2, 2, "max",
@@ -166,7 +166,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            Math.min(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1]).get()));
+                            Math.min(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1]).asFloat()));
                 }),
                 "mod", new MoLangFunction(moLangElement -> {
                     checkArgs(moLangElement, 2, 2, "mod",
@@ -174,7 +174,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            ((MoLangPrimitive) moLangElement[0]).get() % ((MoLangPrimitive) moLangElement[1]).get());
+                            ((MoLangPrimitive) moLangElement[0]).asFloat() % ((MoLangPrimitive) moLangElement[1]).asFloat());
                 }),
                 "pi", new MoLangFunction(moLangElement -> {
                     return new MoLangPrimitive(
@@ -187,8 +187,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.pow(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get()));
+                            (float) Math.pow(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat()));
                 }),
                 "random", new MoLangFunction(moLangElement -> {
                     checkArgs(moLangElement, 2, 2, "pow",
@@ -196,8 +196,8 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.random(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get()));
+                            MathHelper.random(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat()));
                 }),
                 "random_integer", new MoLangFunction(moLangElement -> {
                     checkArgs(moLangElement, 2, 2, "pow",
@@ -205,15 +205,15 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.randomInteger(((MoLangPrimitive) moLangElement[0]).get(), ((MoLangPrimitive) moLangElement[1])
-                                    .get()));
+                            MathHelper.randomInteger(((MoLangPrimitive) moLangElement[0]).asFloat(), ((MoLangPrimitive) moLangElement[1])
+                                    .asFloat()));
                 }),
                 "round", new MoLangFunction(moLangElement -> {
                     checkArgs(moLangElement, 1, 1, "round",
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            Math.round(((MoLangPrimitive) moLangElement[0]).get())
+                            Math.round(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "sin", new MoLangFunction(moLangElement -> {
@@ -221,7 +221,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.sin(Math.toRadians(((MoLangPrimitive) moLangElement[0]).get()))
+                            (float) Math.sin(Math.toRadians(((MoLangPrimitive) moLangElement[0]).asFloat()))
                     );
                 }),
                 "sqrt", new MoLangFunction(moLangElement -> {
@@ -229,7 +229,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            (float) Math.sqrt(((MoLangPrimitive) moLangElement[0]).get())
+                            (float) Math.sqrt(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 }),
                 "trunc", new MoLangFunction(moLangElement -> {
@@ -237,7 +237,7 @@ public class MoLangMath extends MoLangFunctionObject {
                             MoLangPrimitive.class
                     );
                     return new MoLangPrimitive(
-                            MathHelper.truncate(((MoLangPrimitive) moLangElement[0]).get())
+                            MathHelper.truncate(((MoLangPrimitive) moLangElement[0]).asFloat())
                     );
                 })
         );
